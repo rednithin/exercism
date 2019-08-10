@@ -54,7 +54,7 @@ fn test_wide_characters() {
 }
 
 #[test]
-#[ignore]
+// #[ignore]
 #[cfg(feature = "grapheme")]
 /// grapheme clusters
 fn test_grapheme_clusters() {
