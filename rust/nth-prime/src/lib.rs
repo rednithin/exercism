@@ -3,9 +3,10 @@ pub fn nth(n: u32) -> u32 {
     let mut len = 1;
 
     let is_prime = |num, primes: &Vec<u32>| {
+        let sqrt_num = (num as f64).sqrt();
         !primes
             .iter()
-            .filter(|&prime| *prime as f64 <= (num as f64).sqrt())
+            .take_while(|&prime| *prime as f64 <= sqrt_num)
             .map(|&prime| num % prime == 0)
             .any(|x| x == true)
     };
