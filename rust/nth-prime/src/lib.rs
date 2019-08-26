@@ -18,7 +18,8 @@ pub fn nth(n: u32) -> u32 {
         // println!("{:?}", primes);
         if len >= n + 1 {
             if let Some(the_prime) = primes.get(n as usize) {
-                return the_prime.clone();
+                // return the_prime.clone();
+                return *the_prime;
             }
         }
     }
