@@ -1,9 +1,5 @@
 fn is_yelling(message: &str) -> bool {
-    message
-        .chars()
-        .filter(|x| x.is_alphabetic())
-        .all(|x| x.is_uppercase())
-        && message.chars().any(|x| x.is_alphabetic())
+    message.chars().all(|x| !x.is_lowercase()) && message.chars().any(char::is_alphabetic)
 }
 
 pub fn reply(message: &str) -> &str {
