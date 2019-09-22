@@ -21,15 +21,15 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &'a [&str]) -> HashSet<&'
     let word = word.to_lowercase();
     let letter_freq = counter(&word);
 
-    let mut anagrams: HashSet<&'a str> = HashSet::new();
     possible_anagrams
         .iter()
-        .for_each(|possible_anagram: &&'a str| {
+        .filter_map(|possible_anagram: &&'a str| {
             let candidate = possible_anagram.to_lowercase();
             let letter_freq_candidate = counter(&candidate);
             if candidate != word && are_counters_equal(&letter_freq, &letter_freq_candidate) {
-                anagrams.insert(possible_anagram);
+                return Some(*possible_anagram);
             }
-        });
-    anagrams
+            None
+        })
+        .collect::<HashSet<&'a str>>()
 }
